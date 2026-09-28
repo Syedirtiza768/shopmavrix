@@ -27,11 +27,14 @@
     .bag-button{min-height:42px;margin-left:clamp(.5rem,2vw,1.5rem);padding:0 .9rem;border:1px solid var(--ink);transition:background 180ms ease,color 180ms ease}
     .bag-button:hover,.bag-button:focus-visible{background:var(--ink);color:var(--white)}.bag-count{margin-left:.45rem}
     .shop{width:min(100% - 2.5rem,1380px);min-height:min(800px,calc(100svh - 113px));margin:auto;padding:clamp(2.5rem,6vw,5.4rem) 0;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(350px,.88fr);align-items:center;gap:clamp(2.5rem,7vw,8rem)}
-    .product-media{position:relative;overflow:hidden;margin:0;background:#e7e6e0;box-shadow:12px 12px 0 rgba(17,17,17,.045)}
-    .product-media img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#e7e6e0}
+    .product-media{position:relative;margin:0;background:#e7e6e0;box-shadow:12px 12px 0 rgba(17,17,17,.045)}
+    .image-stage{position:relative;overflow:hidden;aspect-ratio:1;background:#e7e6e0}
+    .product-media img{display:block;width:100%;height:100%;object-fit:contain;background:#e7e6e0;transition:opacity 180ms ease}
     .zoom-button{position:absolute;top:.9rem;right:.9rem;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(17,17,17,.22);background:rgba(251,250,247,.94);color:var(--ink);cursor:zoom-in;transition:background 180ms ease,transform 180ms ease}
     .zoom-button:hover{transform:scale(1.06);background:white}.zoom-button svg{width:19px;height:19px}
+    .gallery-arrow{position:absolute;top:50%;width:40px;height:40px;display:grid;place-items:center;transform:translateY(-50%);border:1px solid rgba(17,17,17,.2);background:rgba(251,250,247,.92);font-size:1.1rem;cursor:pointer;transition:background 160ms ease,transform 160ms ease}.gallery-arrow:hover{background:white}.gallery-arrow.previous{left:.8rem}.gallery-arrow.next{right:.8rem}
     .media-caption{position:absolute;right:.8rem;bottom:.8rem;padding:.7rem .8rem;background:rgba(251,250,247,.94);font-size:.58rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+    .gallery-strip{min-height:55px;padding:.55rem .65rem;display:flex;align-items:center;gap:.45rem;background:var(--white)}.gallery-thumb{min-height:34px;padding:.45rem .6rem;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background 160ms ease,color 160ms ease,border-color 160ms ease}.gallery-thumb[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:white}.gallery-thumb span{margin-right:.35rem;font-variant-numeric:tabular-nums}
     .product-copy{max-width:520px}.eyebrow,.kicker,.demo-tag,.field-label,.detail-label,.footer-label{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
     .eyebrow{display:flex;align-items:center;gap:.7rem;margin:0 0 1.25rem;color:var(--muted)}.eyebrow::before{width:25px;height:1px;background:var(--silver);content:""}
     h1,h2,h3,p,dl,dd{margin-top:0}h1{margin-bottom:1.25rem;font-family:var(--display);font-size:clamp(4.4rem,7vw,7.5rem);font-weight:500;line-height:.83;letter-spacing:-.035em;text-transform:uppercase}
@@ -41,6 +44,7 @@
     .demo-tag{padding:.35rem .48rem;border:1px solid var(--line);color:var(--muted);font-size:.52rem}
     .buy-panel{padding:1.1rem;border:1px solid var(--line);background:rgba(251,250,247,.72)}
     .control-row{display:grid;grid-template-columns:minmax(0,1fr) 125px;gap:1rem}.field-label{display:block;margin-bottom:.55rem;color:#41413d;font-size:.58rem}
+    .size-label-row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}.size-guide-link{margin:0 0 .55rem;padding:0;border:0;background:none;color:#55554f;font-size:.57rem;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.size-guide-link:hover{color:var(--ink)}
     .select-wrap select{width:100%;min-height:47px;padding:0 .75rem;border:1px solid #c7c6bf;border-radius:0;background:var(--white);color:var(--ink);font-size:.82rem}
     .quantity{min-height:47px;display:grid;grid-template-columns:38px 1fr 38px;align-items:center;border:1px solid #c7c6bf;background:var(--white)}
     .quantity button{height:100%;border:0;background:transparent;color:var(--ink);font-size:1.1rem;cursor:pointer;transition:background 160ms ease}.quantity button:hover{background:#eae9e3}
@@ -98,7 +102,7 @@
     @media(max-width:680px){
       .demo-ribbon{min-height:40px;font-size:.54rem;letter-spacing:.06em}.site-header{min-height:68px;padding-inline:1rem}.wordmark{font-size:1.2rem}.nav-links{gap:0}.nav-links a{display:none}
       .bag-button{min-height:39px;margin-left:0;font-size:.59rem}
-      .shop{width:min(100% - 2rem,500px);padding:1.25rem 0 2.8rem;grid-template-columns:1fr;gap:1.5rem}.product-media{order:0}.product-copy{order:1}.media-caption{right:.55rem;bottom:.55rem;font-size:.52rem}.zoom-button{top:.6rem;right:.6rem;width:42px;height:42px}
+      .shop{width:min(100% - 2rem,500px);padding:1.25rem 0 2.8rem;grid-template-columns:1fr;gap:1.5rem}.product-media{order:0}.product-copy{order:1}.media-caption{right:.55rem;bottom:.55rem;font-size:.52rem}.zoom-button{top:.6rem;right:.6rem;width:42px;height:42px}.gallery-arrow{width:36px;height:36px}.gallery-arrow.previous{left:.55rem}.gallery-arrow.next{right:.55rem}
       .product-copy .eyebrow{margin-bottom:.85rem}h1{margin-bottom:1rem;font-size:clamp(3.65rem,17vw,5.5rem)}.description{margin-bottom:1.2rem;font-size:.9rem}.price-row{margin-bottom:1.1rem}.buy-panel{padding:.9rem}
       .control-row{grid-template-columns:minmax(0,1fr) 118px;gap:.7rem}
       .details,.specs{padding:3.5rem 1rem}.section-head{align-items:start;flex-direction:column;gap:1rem}h2{font-size:clamp(2.8rem,13vw,4rem)}.section-head>p{font-size:.87rem}
@@ -129,11 +133,19 @@
   <main id="main">
     <section class="shop" id="top" aria-labelledby="product-title">
       <figure class="product-media motion-media">
-        <img id="productImage" src="/assets/mavrix-training-gloves-enhanced.png" alt="Pair of black MAVRIX fingerless training gloves, palms facing forward, showing the textured panels and wrist straps." width="1244" height="1244">
-        <button class="zoom-button" id="openZoom" type="button" aria-label="Magnify the complete MAVRIX gloves image" aria-haspopup="dialog">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"></circle><path d="m16 16 5 5M10.8 7.8v6M7.8 10.8h6"></path></svg>
-        </button>
-        <figcaption class="media-caption">Pair shown / palm side</figcaption>
+        <div class="image-stage" id="imageStage" aria-label="MAVRIX product image gallery">
+          <img id="productImage" src="/assets/mavrix-training-gloves-enhanced.png" alt="Pair of black MAVRIX fingerless training gloves, palms facing forward, showing the textured panels and wrist straps." width="1244" height="1244">
+          <button class="gallery-arrow previous" id="previousImage" type="button" aria-label="Show previous product image">←</button>
+          <button class="gallery-arrow next" id="nextImage" type="button" aria-label="Show next product image">→</button>
+          <button class="zoom-button" id="openZoom" type="button" aria-label="Magnify the complete MAVRIX gloves image" aria-haspopup="dialog">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"></circle><path d="m16 16 5 5M10.8 7.8v6M7.8 10.8h6"></path></svg>
+          </button>
+          <figcaption class="media-caption" id="imageCaption">Studio view / complete pair</figcaption>
+        </div>
+        <div class="gallery-strip" role="group" aria-label="Choose product photo">
+          <button class="gallery-thumb" type="button" data-gallery-index="0" aria-pressed="true"><span>01</span> Studio</button>
+          <button class="gallery-thumb" type="button" data-gallery-index="1" aria-pressed="false"><span>02</span> Original photo</button>
+        </div>
       </figure>
       <div class="product-copy motion-copy" id="shop">
         <p class="eyebrow">MAVRIX / Training equipment</p>
@@ -144,7 +156,7 @@
         <div class="buy-panel">
           <div class="control-row">
             <div class="select-wrap">
-              <label class="field-label" for="sizeSelect">Choose a size</label>
+              <div class="size-label-row"><label class="field-label" for="sizeSelect">Choose a size</label><button class="size-guide-link" id="openSizeGuide" type="button" aria-haspopup="dialog">Size guide</button></div>
               <select id="sizeSelect" aria-describedby="sizeHelp sizeError">
                 <option value="">Select demo size</option><option value="S">Small / S</option><option value="M">Medium / M</option><option value="L">Large / L</option><option value="XL">Extra large / XL</option>
               </select>
@@ -208,7 +220,14 @@
 
   <dialog class="dialog zoom-dialog" id="zoomDialog" aria-labelledby="zoomTitle">
     <div class="dialog-head"><p class="kicker" id="zoomTitle">MAVRIX / Full product view</p><button class="close" type="button" data-close="zoomDialog" aria-label="Close magnified image">×</button></div>
-    <img class="zoom-image" src="/assets/mavrix-training-gloves-enhanced.png" alt="Full view of the complete pair of black MAVRIX fingerless training gloves, including the palms, finger loops and wrist straps." width="1244" height="1244">
+    <img class="zoom-image" id="zoomImage" src="/assets/mavrix-training-gloves-enhanced.png" alt="Full view of the complete pair of black MAVRIX fingerless training gloves, including the palms, finger loops and wrist straps." width="1244" height="1244">
+  </dialog>
+
+  <dialog class="dialog" id="sizeGuideDialog" aria-labelledby="sizeGuideTitle">
+    <div class="dialog-head"><div><p class="kicker">Fit guide</p><h2 id="sizeGuideTitle">Find your size</h2></div><button class="close" type="button" data-close="sizeGuideDialog" aria-label="Close size guide">×</button></div>
+    <p class="description">For a useful hand measurement, wrap a soft tape around your palm just below the knuckles, with your thumb out. Keep the tape snug without squeezing.</p>
+    <div class="checkout-summary"><strong>Demo sizes: S · M · L · XL</strong>The confirmed MAVRIX measurement chart is not available yet. Treat these size options as placeholders and wait for the final chart before ordering.</div>
+    <p class="dialog-note">This guide explains where to measure; it does not assign a size. A product-specific size chart should be added before real orders are accepted.</p>
   </dialog>
 
   <dialog class="dialog" id="cartDialog" aria-labelledby="cartTitle">
@@ -247,6 +266,14 @@
     const cartDialog = byId("cartDialog");
     const checkoutDialog = byId("checkoutDialog");
     const zoomDialog = byId("zoomDialog");
+    const sizeGuideDialog = byId("sizeGuideDialog");
+    const productImage = byId("productImage");
+    const zoomImage = byId("zoomImage");
+    const galleryImages = [
+      { src: "/assets/mavrix-training-gloves-enhanced.png", alt: "Pair of black MAVRIX fingerless training gloves, palms facing forward, showing the textured panels and wrist straps.", caption: "Studio view / complete pair", rotation: "" },
+      { src: "/assets/mavrix-training-gloves.jpg", alt: "Original photo of the complete pair of black MAVRIX fingerless training gloves, showing the palm panels and wrist straps.", caption: "Original photo / pair shown", rotation: "rotate(90deg)" }
+    ];
+    let activeImage = 0;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     function money(amount) {
@@ -255,6 +282,20 @@
     function updateQuantity() {
       byId("quantityValue").value = String(quantity);
       byId("quantityValue").textContent = String(quantity);
+    }
+    function showGalleryImage(index) {
+      activeImage = (index + galleryImages.length) % galleryImages.length;
+      const image = galleryImages[activeImage];
+      productImage.src = image.src;
+      productImage.alt = image.alt;
+      productImage.style.transform = image.rotation;
+      zoomImage.src = image.src;
+      zoomImage.alt = "Magnified view: " + image.alt;
+      zoomImage.style.transform = image.rotation;
+      byId("imageCaption").textContent = image.caption;
+      document.querySelectorAll("[data-gallery-index]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(Number(button.dataset.galleryIndex) === activeImage));
+      });
     }
     function updateBag() {
       byId("bagCount").textContent = String(bag ? bag.quantity : 0);
@@ -290,9 +331,13 @@
     byId("addToBag").addEventListener("click", addSelectedItem);
     byId("mobileAdd").addEventListener("click", addSelectedItem);
     byId("openZoom").addEventListener("click", () => zoomDialog.showModal());
+    byId("openSizeGuide").addEventListener("click", () => sizeGuideDialog.showModal());
+    document.querySelectorAll("[data-gallery-index]").forEach((button) => button.addEventListener("click", () => showGalleryImage(Number(button.dataset.galleryIndex))));
+    byId("previousImage").addEventListener("click", () => showGalleryImage(activeImage - 1));
+    byId("nextImage").addEventListener("click", () => showGalleryImage(activeImage + 1));
     byId("openCart").addEventListener("click", () => { updateBag(); cartDialog.showModal(); });
     document.querySelectorAll("[data-close]").forEach((button) => button.addEventListener("click", () => byId(button.dataset.close).close()));
-    [cartDialog, checkoutDialog, zoomDialog].forEach((dialog) => dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); }));
+    [cartDialog, checkoutDialog, zoomDialog, sizeGuideDialog].forEach((dialog) => dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); }));
 
     byId("beginCheckout").addEventListener("click", () => {
       if (!bag) return;
