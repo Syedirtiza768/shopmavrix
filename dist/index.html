@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f1f0eb">
+    <meta name="description" content="A closer look at MAVRIX fingerless training gloves.">
+    <meta property="og:title" content="MAVRIX — Training Gloves">
+    <meta property="og:description" content="A closer look at MAVRIX fingerless training gloves.">
+    <title>MAVRIX — Training Gloves</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='5' fill='%23121212'/%3E%3Cpath d='M9 37V11h6l9 12 9-12h6v26h-7V22L24 33l-8-11v15z' fill='%23f4f2eb'/%3E%3C/svg%3E">
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f1f0eb;
+        --ink: #111111;
+        --muted: #6d6d68;
+        --line: #d4d3cd;
+        --silver: #a4a49d;
+        --display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        --body: Arial, Helvetica, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .skip-link {
+        position: absolute;
+        z-index: 5;
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.75rem 1rem;
+        transform: translateY(-160%);
+        background: var(--ink);
+        color: white;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .topline {
+        height: 7px;
+        background: var(--ink);
+      }
+
+      .site-header {
+        min-height: 82px;
+        padding: 0 clamp(1.25rem, 5vw, 5.5rem);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .wordmark {
+        text-decoration: none;
+        font-size: 1.34rem;
+        line-height: 1;
+        font-style: italic;
+        font-weight: 900;
+        letter-spacing: -0.055em;
+      }
+
+      .header-note,
+      .site-nav a,
+      .eyebrow,
+      .image-tag,
+      .detail-label,
+      .detail-value,
+      .footer-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .header-note {
+        color: var(--muted);
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(1rem, 3vw, 2.75rem);
+      }
+
+      .site-nav a {
+        text-decoration: none;
+        transition: opacity 160ms ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus-visible {
+        opacity: 0.58;
+      }
+
+      .hero {
+        width: min(100% - 2.5rem, 1380px);
+        min-height: min(820px, calc(100svh - 89px));
+        margin-inline: auto;
+        padding: clamp(3rem, 6vw, 5.5rem) 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.86fr);
+        align-items: center;
+        gap: clamp(2rem, 7vw, 8rem);
+      }
+
+      .hero-copy {
+        padding-block: 1.5rem;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.72rem;
+        margin: 0 0 1.5rem;
+        color: var(--muted);
+      }
+
+      .eyebrow::before {
+        width: 26px;
+        height: 1px;
+        content: "";
+        background: var(--silver);
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 720px;
+        margin-bottom: 1.8rem;
+        font-family: var(--display);
+        font-size: clamp(4.2rem, 8vw, 8.1rem);
+        font-weight: 500;
+        line-height: 0.84;
+        letter-spacing: -0.035em;
+        text-transform: uppercase;
+      }
+
+      h1 span {
+        display: block;
+        color: var(--silver);
+        font-style: italic;
+      }
+
+      .intro {
+        max-width: 430px;
+        margin-bottom: 2rem;
+        color: #464641;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .primary-link {
+        min-height: 54px;
+        width: fit-content;
+        padding: 0 1.25rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 1.3rem;
+        background: var(--ink);
+        color: white;
+        text-decoration: none;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition: background 160ms ease, color 160ms ease;
+      }
+
+      .primary-link::after {
+        content: "↘";
+        font-size: 1.05rem;
+      }
+
+      .primary-link:hover,
+      .primary-link:focus-visible {
+        background: #3d3d38;
+      }
+
+      .hero-index {
+        margin: 4.1rem 0 0;
+        color: var(--muted);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .hero-visual {
+        position: relative;
+        width: min(100%, 435px);
+        justify-self: center;
+        margin: 0;
+        border: 1px solid var(--line);
+        background: #e8e7e1;
+        box-shadow: 14px 14px 0 rgba(17, 17, 17, 0.045);
+      }
+
+      .hero-visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .image-tag {
+        position: absolute;
+        right: 0.7rem;
+        bottom: 0.7rem;
+        padding: 0.65rem 0.8rem;
+        background: var(--paper);
+        color: var(--ink);
+        font-size: 0.58rem;
+      }
+
+      .details {
+        padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 5vw, 5.5rem);
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .details-inner {
+        width: min(100%, 1380px);
+        margin-inline: auto;
+      }
+
+      .details-heading {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: end;
+        gap: 2rem;
+        padding-bottom: 2.3rem;
+        border-bottom: 1px solid #41413d;
+      }
+
+      .details-heading .eyebrow {
+        margin-bottom: 1rem;
+        color: #a3a39d;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-family: var(--display);
+        font-size: clamp(2.7rem, 5vw, 5.2rem);
+        font-weight: 500;
+        line-height: 0.9;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      .details-summary {
+        max-width: 460px;
+        justify-self: end;
+        margin: 0;
+        color: #c3c3bc;
+        font-size: 0.96rem;
+        line-height: 1.7;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .detail-item {
+        min-height: 145px;
+        padding: 1.6rem 1.2rem 0 0;
+        border-right: 1px solid #41413d;
+      }
+
+      .detail-item + .detail-item {
+        padding-left: clamp(1rem, 3vw, 2.75rem);
+      }
+
+      .detail-item:last-child {
+        border-right: 0;
+      }
+
+      .detail-label {
+        display: block;
+        margin-bottom: 1rem;
+        color: #a3a39d;
+      }
+
+      .detail-value {
+        font-size: 0.9rem;
+        letter-spacing: 0.07em;
+      }
+
+      .site-footer {
+        min-height: 92px;
+        padding: 1.5rem clamp(1.25rem, 5vw, 5.5rem);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .footer-label {
+        margin: 0;
+      }
+
+      .footer-url {
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-decoration: none;
+      }
+
+      :focus-visible {
+        outline: 2px solid #6f6f69;
+        outline-offset: 4px;
+      }
+
+      @media (max-width: 800px) {
+        .header-note {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          grid-template-columns: minmax(0, 1fr) minmax(240px, 0.9fr);
+          gap: 1.75rem;
+        }
+
+        h1 {
+          font-size: clamp(4rem, 10vw, 6.1rem);
+        }
+
+        .hero-visual {
+          width: min(100%, 380px);
+        }
+      }
+
+      @media (max-width: 620px) {
+        .site-header {
+          min-height: 72px;
+          padding-inline: 1.1rem;
+        }
+
+        .site-nav {
+          gap: 1rem;
+        }
+
+        .site-nav a {
+          font-size: 0.58rem;
+        }
+
+        .hero {
+          width: min(100% - 2.2rem, 470px);
+          padding-block: 3rem 3.5rem;
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .hero-copy {
+          padding-block: 0;
+        }
+
+        .eyebrow {
+          margin-bottom: 1.15rem;
+        }
+
+        h1 {
+          margin-bottom: 1.3rem;
+          font-size: clamp(4rem, 19vw, 6.6rem);
+        }
+
+        .intro {
+          max-width: 360px;
+          font-size: 0.93rem;
+        }
+
+        .hero-index {
+          margin-top: 2rem;
+        }
+
+        .hero-visual {
+          width: min(100%, 405px);
+          justify-self: center;
+        }
+
+        .details-heading {
+          grid-template-columns: 1fr;
+          gap: 1.4rem;
+        }
+
+        .details-summary {
+          justify-self: start;
+        }
+
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .detail-item,
+        .detail-item + .detail-item {
+          min-height: 100px;
+          padding: 1.25rem 0;
+          border-right: 0;
+          border-bottom: 1px solid #41413d;
+        }
+
+        .detail-item:last-child {
+          border-bottom: 0;
+        }
+
+        .detail-label {
+          margin-bottom: 0.7rem;
+        }
+
+        .site-footer {
+          min-height: 80px;
+          padding-inline: 1.1rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="topline" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="MAVRIX home">MAVRIX</a>
+      <span class="header-note">Performance apparel</span>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#glove">The glove</a>
+        <a href="#details">Details</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">MAVRIX / Training equipment</p>
+          <h1 id="hero-title">Training <span>gloves</span></h1>
+          <p class="intro">A first look at the black MAVRIX fingerless training gloves, with a textured palm and wraparound wrist strap.</p>
+          <a class="primary-link" href="#glove">Explore the glove</a>
+          <p class="hero-index">Fingerless cut &nbsp;·&nbsp; Black</p>
+        </div>
+        <figure class="hero-visual" id="glove">
+          <img src="/assets/mavrix-training-gloves.jpg" alt="A pair of black MAVRIX fingerless training gloves, showing the textured palm and wrist straps." width="900" height="1600">
+          <figcaption class="image-tag">Training gloves / Black</figcaption>
+        </figure>
+      </section>
+
+      <section class="details" id="details" aria-labelledby="details-title">
+        <div class="details-inner">
+          <div class="details-heading">
+            <div>
+              <p class="eyebrow">Product details</p>
+              <h2 id="details-title">The visible<br>essentials</h2>
+            </div>
+            <p class="details-summary">A close view of the glove’s shape and finish. This page shows the current black product photo and the details visible in it.</p>
+          </div>
+          <div class="detail-grid" aria-label="Visible product details">
+            <div class="detail-item">
+              <span class="detail-label">Coverage</span>
+              <span class="detail-value">Fingerless</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Palm</span>
+              <span class="detail-value">Textured panel</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Wrist</span>
+              <span class="detail-value">Wraparound strap</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="footer-label">MAVRIX / Performance apparel</p>
+      <a class="footer-url" href="#top">shopmavrix.com <span aria-hidden="true">↑</span></a>
+    </footer>
+  </body>
+</html>
