@@ -28,7 +28,9 @@
     .bag-button:hover,.bag-button:focus-visible{background:var(--ink);color:var(--white)}.bag-count{margin-left:.45rem}
     .shop{width:min(100% - 2.5rem,1380px);min-height:min(800px,calc(100svh - 113px));margin:auto;padding:clamp(2.5rem,6vw,5.4rem) 0;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(350px,.88fr);align-items:center;gap:clamp(2.5rem,7vw,8rem)}
     .product-media{position:relative;overflow:hidden;margin:0;background:#e7e6e0;box-shadow:12px 12px 0 rgba(17,17,17,.045)}
-    .product-media img{display:block;width:100%;aspect-ratio:1;object-fit:cover;transition:transform 700ms cubic-bezier(.2,.7,.2,1)}.product-media:hover img{transform:scale(1.025)}
+    .product-media img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#e7e6e0}
+    .zoom-button{position:absolute;top:.9rem;right:.9rem;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(17,17,17,.22);background:rgba(251,250,247,.94);color:var(--ink);cursor:zoom-in;transition:background 180ms ease,transform 180ms ease}
+    .zoom-button:hover{transform:scale(1.06);background:white}.zoom-button svg{width:19px;height:19px}
     .media-caption{position:absolute;right:.8rem;bottom:.8rem;padding:.7rem .8rem;background:rgba(251,250,247,.94);font-size:.58rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
     .product-copy{max-width:520px}.eyebrow,.kicker,.demo-tag,.field-label,.detail-label,.footer-label{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
     .eyebrow{display:flex;align-items:center;gap:.7rem;margin:0 0 1.25rem;color:var(--muted)}.eyebrow::before{width:25px;height:1px;background:var(--silver);content:""}
@@ -67,6 +69,9 @@
     .footer-label{margin:0}.footer-note{color:var(--muted);font-size:.72rem}
     .dialog{width:min(100% - 1.5rem,510px);max-height:min(90svh,780px);margin:auto 0 0 auto;padding:clamp(1.25rem,4vw,2rem);overflow:auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);box-shadow:-18px 0 55px rgba(0,0,0,.2)}
     .dialog[open]{animation:drawer-in 260ms cubic-bezier(.2,.7,.2,1) both}.dialog::backdrop{background:rgba(0,0,0,.48)}
+    .zoom-dialog{width:min(100% - 2rem,1100px);max-height:94svh;margin:auto;padding:clamp(.75rem,2vw,1.25rem);box-shadow:0 18px 70px rgba(0,0,0,.28)}
+    .zoom-dialog[open]{animation:lift-in 220ms ease both}.zoom-dialog .dialog-head{margin-bottom:.75rem;align-items:center}.zoom-dialog .dialog-head .kicker{margin:0}.zoom-image{display:block;width:100%;max-height:78svh;object-fit:contain;background:#e7e6e0}
+    .details-link{display:inline-flex;align-items:center;gap:.5rem;margin:-.45rem 0 1.3rem;color:var(--ink);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-decoration-thickness:1px;text-underline-offset:4px;text-transform:uppercase}.details-link:hover{color:#62625c}
     .dialog-head{margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:start;gap:1rem}.dialog-head .kicker{margin-bottom:.45rem;color:var(--muted)}
     .dialog h2{font-size:2.65rem}.close{width:42px;height:42px;border:1px solid var(--line);background:transparent;font-size:1.2rem;cursor:pointer;transition:background 160ms ease}.close:hover{background:#e5e4dd}
     .empty{padding:1.2rem;border:1px solid var(--line);color:var(--muted);font-size:.88rem;line-height:1.6}
@@ -93,7 +98,7 @@
     @media(max-width:680px){
       .demo-ribbon{min-height:40px;font-size:.54rem;letter-spacing:.06em}.site-header{min-height:68px;padding-inline:1rem}.wordmark{font-size:1.2rem}.nav-links{gap:0}.nav-links a{display:none}
       .bag-button{min-height:39px;margin-left:0;font-size:.59rem}
-      .shop{width:min(100% - 2rem,500px);padding:1.25rem 0 2.8rem;grid-template-columns:1fr;gap:1.5rem}.product-media{order:0}.product-copy{order:1}.media-caption{right:.55rem;bottom:.55rem;font-size:.52rem}
+      .shop{width:min(100% - 2rem,500px);padding:1.25rem 0 2.8rem;grid-template-columns:1fr;gap:1.5rem}.product-media{order:0}.product-copy{order:1}.media-caption{right:.55rem;bottom:.55rem;font-size:.52rem}.zoom-button{top:.6rem;right:.6rem;width:42px;height:42px}
       .product-copy .eyebrow{margin-bottom:.85rem}h1{margin-bottom:1rem;font-size:clamp(3.65rem,17vw,5.5rem)}.description{margin-bottom:1.2rem;font-size:.9rem}.price-row{margin-bottom:1.1rem}.buy-panel{padding:.9rem}
       .control-row{grid-template-columns:minmax(0,1fr) 118px;gap:.7rem}
       .details,.specs{padding:3.5rem 1rem}.section-head{align-items:start;flex-direction:column;gap:1rem}h2{font-size:clamp(2.8rem,13vw,4rem)}.section-head>p{font-size:.87rem}
@@ -124,14 +129,18 @@
   <main id="main">
     <section class="shop" id="top" aria-labelledby="product-title">
       <figure class="product-media motion-media">
-        <img src="/assets/mavrix-training-gloves-enhanced.png" alt="Pair of black MAVRIX fingerless training gloves, palms facing forward, showing the textured panels and wrist straps." width="1244" height="1244">
+        <img id="productImage" src="/assets/mavrix-training-gloves-enhanced.png" alt="Pair of black MAVRIX fingerless training gloves, palms facing forward, showing the textured panels and wrist straps." width="1244" height="1244">
+        <button class="zoom-button" id="openZoom" type="button" aria-label="Magnify the complete MAVRIX gloves image" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"></circle><path d="m16 16 5 5M10.8 7.8v6M7.8 10.8h6"></path></svg>
+        </button>
         <figcaption class="media-caption">Pair shown / palm side</figcaption>
       </figure>
       <div class="product-copy motion-copy" id="shop">
         <p class="eyebrow">MAVRIX / Training equipment</p>
         <h1 id="product-title">Fingerless <span>training gloves</span></h1>
         <p class="description">A pair of black training gloves with open fingers, textured palm panels and wraparound wrist straps. Sample specifications and checkout details are shown for demo purposes.</p>
-        <div class="price-row"><span class="price">PKR 2,490</span><span class="demo-tag">Demo price</span></div>
+        <a class="details-link" href="#details">Explore product details <span aria-hidden="true">↓</span></a>
+        <div class="price-row"><span class="price">$24.90</span><span class="demo-tag">USD · Demo price</span></div>
         <div class="buy-panel">
           <div class="control-row">
             <div class="select-wrap">
@@ -186,7 +195,7 @@
     </section>
 
     <section class="terms" aria-label="Demo delivery and payment terms">
-      <div class="terms-inner"><p class="terms-title">Demo delivery &amp; payment</p><p class="terms-copy">Sample delivery: PKR 250 · Cash on delivery shown for demo · No real orders or payments are processed.</p></div>
+      <div class="terms-inner"><p class="terms-title">Demo delivery &amp; payment</p><p class="terms-copy">Sample delivery: $2.50 USD · Cash on delivery shown for demo · No real orders or payments are processed.</p></div>
     </section>
 
     <section class="confirmation" id="orderConfirmation" role="status" aria-live="polite" tabindex="-1" hidden>
@@ -195,7 +204,12 @@
   </main>
 
   <footer class="site-footer"><p class="footer-label">MAVRIX / Performance apparel</p><span class="footer-note">Demo shop · shopmavrix.com</span></footer>
-  <div class="mobile-buy" aria-label="Quick product action"><span class="mobile-price">PKR 2,490<small>Demo price</small></span><button type="button" id="mobileAdd">Add to bag</button></div>
+  <div class="mobile-buy" aria-label="Quick product action"><span class="mobile-price">$24.90<small>USD · Demo price</small></span><button type="button" id="mobileAdd">Add to bag</button></div>
+
+  <dialog class="dialog zoom-dialog" id="zoomDialog" aria-labelledby="zoomTitle">
+    <div class="dialog-head"><p class="kicker" id="zoomTitle">MAVRIX / Full product view</p><button class="close" type="button" data-close="zoomDialog" aria-label="Close magnified image">×</button></div>
+    <img class="zoom-image" src="/assets/mavrix-training-gloves-enhanced.png" alt="Full view of the complete pair of black MAVRIX fingerless training gloves, including the palms, finger loops and wrist straps." width="1244" height="1244">
+  </dialog>
 
   <dialog class="dialog" id="cartDialog" aria-labelledby="cartTitle">
     <div class="dialog-head"><div><p class="kicker">Demo bag</p><h2 id="cartTitle">Your bag</h2></div><button class="close" type="button" data-close="cartDialog" aria-label="Close bag">×</button></div>
@@ -216,15 +230,15 @@
       <label>Sample name<input name="name" required maxlength="80" autocomplete="off" placeholder="Demo customer"></label>
       <label>Sample phone<input name="phone" required inputmode="tel" maxlength="30" autocomplete="off" placeholder="0300 0000000"></label>
       <label>Sample delivery address<textarea name="address" required maxlength="300" autocomplete="off" placeholder="Demo address"></textarea></label>
-      <div class="checkout-summary"><strong>Payment method: Cash on delivery (demo)</strong>Sample delivery charge: PKR 250</div>
+      <div class="checkout-summary"><strong>Payment method: Cash on delivery (demo)</strong>Sample delivery charge: $2.50 USD</div>
       <button class="action" type="submit">Place demo order</button>
     </form>
   </dialog>
 
   <script>
     document.documentElement.classList.add("js");
-    const PRICE = 2490;
-    const SHIPPING = 250;
+    const PRICE = 24.90;
+    const SHIPPING = 2.50;
     let quantity = 1;
     let bag = null;
     const byId = (id) => document.getElementById(id);
@@ -232,9 +246,11 @@
     const sizeError = byId("sizeError");
     const cartDialog = byId("cartDialog");
     const checkoutDialog = byId("checkoutDialog");
+    const zoomDialog = byId("zoomDialog");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     function money(amount) {
-      return "PKR " + Number(amount).toLocaleString("en-PK");
+      return "$" + Number(amount).toFixed(2) + " USD";
     }
     function updateQuantity() {
       byId("quantityValue").value = String(quantity);
@@ -273,9 +289,10 @@
     sizeSelect.addEventListener("change", () => { sizeError.textContent = ""; });
     byId("addToBag").addEventListener("click", addSelectedItem);
     byId("mobileAdd").addEventListener("click", addSelectedItem);
+    byId("openZoom").addEventListener("click", () => zoomDialog.showModal());
     byId("openCart").addEventListener("click", () => { updateBag(); cartDialog.showModal(); });
     document.querySelectorAll("[data-close]").forEach((button) => button.addEventListener("click", () => byId(button.dataset.close).close()));
-    [cartDialog, checkoutDialog].forEach((dialog) => dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); }));
+    [cartDialog, checkoutDialog, zoomDialog].forEach((dialog) => dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); }));
 
     byId("beginCheckout").addEventListener("click", () => {
       if (!bag) return;
@@ -300,7 +317,7 @@
       const confirmation = byId("orderConfirmation");
       confirmation.hidden = false;
       confirmation.focus();
-      confirmation.scrollIntoView({ behavior: "smooth", block: "center" });
+      confirmation.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "center" });
     });
 
     if ("IntersectionObserver" in window) {
